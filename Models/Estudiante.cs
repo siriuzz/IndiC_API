@@ -1,21 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
+﻿using System;
+using System.Collections.Generic;
 
-namespace IndiC_API.Models
+namespace IndiC_API.Models;
+
+public partial class Estudiante
 {
-    public class Estudiante
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Email { get; set; }
-        public string Telefono {  get; set; }
-        public string Cedula { get; set; }
-        public string Password { get; set; }
-        public DateTime Fecha_Registro { get; set; }
-        public string Direccion {  get; set; }
-        public string Configuracion {  get; set; }
-        //public int Id_Carrera { get; set; }
-        //public int Id_Asignatura { get;set; }
-        //public int Id_Estado { get; set; }
-        //public int Id_Rol { get; set; }
-    }
+    public int IdEstudiante { get; set; }
+
+    public string NombreEstudiante { get; set; } = null!;
+
+    public string CorreoEstudiante { get; set; } = null!;
+
+    public string TelefonoEstudiante { get; set; } = null!;
+
+    public int CedulaEstudiante { get; set; }
+
+    public string PasswordEstudiante { get; set; } = null!;
+
+    public DateTime FechaRegistro { get; set; }
+
+    public string Direccion { get; set; } = null!;
+
+    public string Configuracion { get; set; } = null!;
+
+    public string IdCarrera { get; set; } = null!;
+
+    public int IdAsignatura { get; set; }
+
+    public int IdEstado { get; set; }
+
+    public int IdRol { get; set; }
+
+    public int PeriodosCursados { get; set; }
+
+    public virtual ICollection<EstudianteAsignatura> EstudianteAsignaturas { get; set; } = new List<EstudianteAsignatura>();
+
+    public virtual Carrera IdCarreraNavigation { get; set; } = null!;
+
+    public virtual Estado IdEstadoNavigation { get; set; } = null!;
+
+    public virtual Role IdRolNavigation { get; set; } = null!;
 }

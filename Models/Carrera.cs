@@ -1,10 +1,17 @@
-﻿namespace IndiC_API.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace IndiC_API.Models;
+
+public partial class Carrera
 {
-    public class Carrera
-    {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public int Periodos_Totales { get; set; }
-        public int Asignaturas_Totales { get; set; }
-    }
+    public string IdCarrera { get; set; } = null!;
+
+    public string Carrera1 { get; set; } = null!;
+
+    public int PeriodosTotales { get; set; }
+
+    public int AsignaturasTotales { get; set; }
+
+    public virtual ICollection<Estudiante> Estudiantes { get; set; } = new List<Estudiante>();
 }
